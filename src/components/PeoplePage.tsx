@@ -72,37 +72,23 @@ export const PeoplePage = () => {
                       }
                     >
                       <td>
-                        <PersonLink
-                          name={person.name}
-                          sex={person.sex}
-                          people={people}
-                        />
+                        <PersonLink person={person} />
                       </td>
 
                       <td>{person.sex}</td>
                       <td>{person.born}</td>
                       <td>{person.died}</td>
                       <td>
-                        {person.motherName ? (
-                          <PersonLink
-                            name={person.motherName}
-                            sex={mother?.sex}
-                            people={people}
-                          />
-                        ) : (
-                          '-'
-                        )}
+                        <PersonLink
+                          person={mother}
+                          originalName={person.motherName}
+                        />
                       </td>
                       <td>
-                        {person.fatherName ? (
-                          <PersonLink
-                            name={person.fatherName!}
-                            sex={father?.sex}
-                            people={people}
-                          />
-                        ) : (
-                          '-'
-                        )}
+                        <PersonLink
+                          person={father}
+                          originalName={person.fatherName}
+                        />
                       </td>
                     </tr>
                   );

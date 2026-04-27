@@ -2,23 +2,20 @@ import { Link } from 'react-router-dom';
 import { Person } from '../types';
 
 type Props = {
-  name: string;
-  sex?: string;
-  people: Person[];
+  person?: Person;
+  originalName?: string | null;
 };
-export const PersonLink = ({ name, sex, people }: Props) => {
-  const person = people.find(p => p.name === name);
-
+export const PersonLink = ({ person, originalName }: Props) => {
   if (!person) {
-    return <span>{name}</span>;
+    return <span>{originalName || '-'}</span>;
   }
 
   return (
     <Link
       to={`/people/${person.slug}`}
-      className={sex === 'f' ? 'has-text-danger' : ''}
+      className={person.sex === 'f' ? 'has-text-danger' : ''}
     >
-      {name}
+      {originalName || person.name}
     </Link>
   );
 };
